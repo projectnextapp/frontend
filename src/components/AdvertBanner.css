@@ -1,0 +1,332 @@
+.advert-banner {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.advert-banner--header {
+  margin-bottom: 20px;
+}
+
+.advert-banner--footer {
+  margin-top: 20px;
+}
+
+/* Wrapper with fade transition */
+.advert-banner__wrapper {
+  position: relative;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.advert-banner__wrapper.transitioning {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+/* Image Advert */
+.advert-banner__with-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.advert-banner:hover .advert-banner__with-image {
+  transform: scale(1.02);
+}
+
+.advert-banner__with-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* Close Button */
+.advert-banner__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 20px;
+  z-index: 10;
+}
+
+.advert-banner__close:hover {
+  background: rgba(220,38,38,0.9);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Text Advert */
+.advert-banner__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 12px;
+  border-left: 4px solid #3b82f6;
+}
+
+.advert-banner__text {
+  flex: 1;
+}
+
+.advert-banner__text h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 4px;
+}
+
+.advert-banner__text p {
+  font-size: 14px;
+  color: #1e3a8a;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.advert-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-advert-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-advert-action:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+}
+
+.btn-advert-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #93c5fd;
+  background: white;
+  color: #1e40af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 18px;
+}
+
+.btn-advert-close:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #dc2626;
+  transform: rotate(90deg);
+}
+
+/* Progress Bar */
+.advert-banner__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.3);
+  overflow: hidden;
+}
+
+.advert-banner__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(59,130,246,0.5);
+}
+
+/* Navigation Arrows */
+.advert-banner__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 24px;
+  opacity: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.advert-banner:hover .advert-banner__nav {
+  opacity: 1;
+}
+
+.advert-banner__nav:hover:not(:disabled) {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.advert-banner__nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.advert-banner__nav--prev {
+  left: 12px;
+}
+
+.advert-banner__nav--next {
+  right: 12px;
+}
+
+/* Navigation Dots */
+.advert-banner__dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.dot:hover:not(:disabled) {
+  background: rgba(255,255,255,0.8);
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.dot:disabled {
+  cursor: not-allowed;
+}
+
+/* Counter */
+.advert-banner__counter {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .advert-banner__content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .advert-banner__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .advert-banner__nav {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    opacity: 1;
+  }
+
+  .advert-banner__nav--prev {
+    left: 8px;
+  }
+
+  .advert-banner__nav--next {
+    right: 8px;
+  }
+
+  .advert-banner__counter {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
+
+/* Touch Device Support */
+@media (hover: none) {
+  .advert-banner__nav {
+    opacity: 1;
+  }
+}

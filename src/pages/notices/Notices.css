@@ -1,0 +1,48 @@
+/* Reuse members__tab from Members.css */
+
+.notice-cards { display: flex; flex-direction: column; gap: 12px; }
+
+.notice-card {}
+
+.notice-card__header {
+  padding: 18px 22px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.notice-card__header:hover { background: var(--surface-2); border-radius: var(--radius-lg); }
+
+.notice-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.notice-card__date { font-size: 12px; color: var(--text-muted); }
+
+.notice-card__title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+
+.notice-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.notice-card__author { font-size: 12.5px; color: var(--text-muted); }
+.notice-card__edited { color: var(--warning); font-style: italic; }
+
+.notice-card__actions { display: flex; gap: 6px; }
+
+.notice-card__body {
+  padding: 0 22px 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin: 0 22px;
+  white-space: pre-wrap;
+}

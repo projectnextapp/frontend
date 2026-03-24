@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="description" content="AGMS - Association & Group Management System" />
+    <title>AGMS — Association Management</title>
+    <style>
+      .loading-screen {
+        display: flex; align-items: center; justify-content: center;
+        min-height: 100vh; background: #f5f6fa;
+      }
+      .spinner {
+        width: 36px; height: 36px;
+        border: 3px solid #e2e6f0;
+        border-top-color: #1a5cff;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

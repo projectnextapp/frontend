@@ -1,0 +1,4 @@
+/* Finance.css - reuses .members-table from Members.css via global scope */
+/* Additional finance-specific styles */
+
+.finance-summary { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
