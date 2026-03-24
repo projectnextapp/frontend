@@ -8,7 +8,8 @@ import {
 import axios from "axios";
 import "./AdvertBanner.css";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_URL =
+  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
 
 export default function AdvertBanner({ position = "header" }) {
   const [adverts, setAdverts] = useState([]);

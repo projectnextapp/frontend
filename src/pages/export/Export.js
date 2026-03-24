@@ -19,7 +19,7 @@ export default function Export() {
     try {
       const token = localStorage.getItem("agms_token");
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/exports/${type}/${format}`,
+        `${process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com"}/api/exports/${type}/${format}`,
         {
           method: "GET",
           headers: {
