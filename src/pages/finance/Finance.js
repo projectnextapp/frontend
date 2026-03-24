@@ -18,14 +18,14 @@ import { format } from "date-fns";
 import toast from "react-hot-toast";
 import "./Finance.css";
 
-const TYPE_OPT = [
-  { value: "", label: "All types" },
-  { value: "dues", label: "Dues" },
-  { value: "levy", label: "Levy" },
-  { value: "fine", label: "Fine" },
-  { value: "donation", label: "Donation" },
-  { value: "other", label: "Other" },
-];
+// const TYPE_OPT = [
+//   { value: "", label: "All types" },
+//   { value: "dues", label: "Dues" },
+//   { value: "levy", label: "Levy" },
+//   { value: "fine", label: "Fine" },
+//   { value: "donation", label: "Donation" },
+//   { value: "other", label: "Other" },
+// ];
 
 const TYPE_CREATE = [
   { value: "dues", label: "Dues" },
@@ -82,6 +82,7 @@ export default function Finance() {
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handle = (e) =>
