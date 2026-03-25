@@ -19,7 +19,7 @@ export default function SuperAdminLogin() {
 
     try {
       const res = await axios.post(
-        `${API_URL}/api/superadmin/auth/login`,
+        `${API_URL}/superadmin/auth/login`,
         formData,
       );
 
