@@ -9,7 +9,7 @@ import axios from "axios";
 import "./AdvertBanner.css";
 
 const API_URL =
-  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
+  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com/api";
 
 export default function AdvertBanner({ position = "header" }) {
   const [adverts, setAdverts] = useState([]);
@@ -25,7 +25,7 @@ export default function AdvertBanner({ position = "header" }) {
   const fetchAdverts = useCallback(async () => {
     try {
       const token = localStorage.getItem("agms_token");
-      const res = await axios.get(`${API_URL}/api/adverts`, {
+      const res = await axios.get(`${API_URL}/adverts`, {
         headers: { Authorization: `Bearer ${token}` },
         params: { position },
       });
@@ -136,7 +136,7 @@ export default function AdvertBanner({ position = "header" }) {
     try {
       const token = localStorage.getItem("agms_token");
       await axios.post(
-        `${API_URL}/api/adverts/${advertId}/impression`,
+        `${API_URL}/adverts/${advertId}/impression`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -149,7 +149,7 @@ export default function AdvertBanner({ position = "header" }) {
     try {
       const token = localStorage.getItem("agms_token");
       await axios.post(
-        `${API_URL}/api/adverts/${advertId}/click`,
+        `${API_URL}/adverts/${advertId}/click`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -162,7 +162,7 @@ export default function AdvertBanner({ position = "header" }) {
     try {
       const token = localStorage.getItem("agms_token");
       await axios.post(
-        `${API_URL}/api/adverts/${advertId}/dismiss`,
+        `${API_URL}/adverts/${advertId}/dismiss`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
       );
