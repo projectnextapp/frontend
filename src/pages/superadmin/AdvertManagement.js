@@ -65,7 +65,7 @@ export default function AdvertManagement() {
   const fetchStats = useCallback(async () => {
     try {
       const token = localStorage.getItem("superadmin_token");
-      const res = await axios.get(`${API_URL}/api/superadmin/adverts/stats`, {
+      const res = await axios.get(`${API_URL}/superadmin/adverts/stats`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -121,8 +121,8 @@ export default function AdvertManagement() {
       }
 
       const url = editingAdvert
-        ? `${API_URL}/api/superadmin/adverts/${editingAdvert._id}`
-        : `${API_URL}/api/superadmin/adverts`;
+        ? `${API_URL}/superadmin/adverts/${editingAdvert._id}`
+        : `${API_URL}/superadmin/adverts`;
 
       const method = editingAdvert ? "put" : "post";
 
@@ -167,7 +167,7 @@ export default function AdvertManagement() {
     try {
       const token = localStorage.getItem("superadmin_token");
       await axios.patch(
-        `${API_URL}/api/superadmin/adverts/${id}/toggle`,
+        `${API_URL}/superadmin/adverts/${id}/toggle`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -178,7 +178,8 @@ export default function AdvertManagement() {
       fetchAdverts();
       fetchStats();
     } catch (err) {
-      toast.error("Failed to toggle advert");
+      console.log("TOGGLE ERROR:", err.response);
+      toast.error(err.response?.data?.message || "Failed to toggle advert");
     }
   };
 
@@ -187,7 +188,7 @@ export default function AdvertManagement() {
 
     try {
       const token = localStorage.getItem("superadmin_token");
-      await axios.delete(`${API_URL}/api/superadmin/adverts/${id}`, {
+      await axios.delete(`${API_URL}/superadmin/adverts/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
