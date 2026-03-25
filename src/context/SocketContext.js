@@ -22,8 +22,12 @@ export const SocketProvider = ({ children }) => {
         return;
       }
 
+      // const BASE_URL =
+      //   process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
+
       const BASE_URL =
-        process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
+        process.env.REACT_APP_API_URL?.replace("/api", "") ||
+        "https://backend-083k.onrender.com";
 
       console.log("🔌 Connecting to Socket.io...", BASE_URL);
       console.log("🔑 Token:", token ? "Present" : "Missing");
