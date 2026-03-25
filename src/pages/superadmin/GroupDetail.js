@@ -70,7 +70,7 @@ export default function GroupDetail() {
     try {
       const token = localStorage.getItem("superadmin_token");
       const res = await axios.patch(
-        `${API_URL}/api/superadmin/groups/${id}/admin/toggle`,
+        `${API_URL}/superadmin/groups/${id}/admin/toggle`,
         { activate: !data.group.isActive },
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -94,7 +94,7 @@ export default function GroupDetail() {
     try {
       const token = localStorage.getItem("superadmin_token");
       const res = await axios.patch(
-        `${API_URL}/api/superadmin/groups/${id}/executives/${memberId}/toggle`,
+        `${API_URL}/superadmin/groups/${id}/executives/${memberId}/toggle`,
         { activate: !isActive },
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -119,7 +119,7 @@ export default function GroupDetail() {
     try {
       const token = localStorage.getItem("superadmin_token");
       const res = await axios.post(
-        `${API_URL}/api/superadmin/groups/${id}/notify`,
+        `${API_URL}/superadmin/groups/${id}/notify`,
         {
           title: notificationData.title,
           message: notificationData.message,
