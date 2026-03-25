@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import "./AdvertManagement.css";
 
 const API_URL =
-  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
+  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com/api";
 
 export default function AdvertManagement() {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ export default function AdvertManagement() {
       const token = localStorage.getItem("superadmin_token");
       const params = filter !== "all" ? { status: filter } : {};
 
-      const res = await axios.get(`${API_URL}/api/superadmin/adverts`, {
+      const res = await axios.get(`${API_URL}/superadmin/adverts`, {
         headers: { Authorization: `Bearer ${token}` },
         params,
       });

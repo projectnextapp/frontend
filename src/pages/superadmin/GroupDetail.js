@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 import "./GroupDetail.css";
 
 const API_URL =
-  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
+  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com/api";
 
 export default function GroupDetail() {
   const { id } = useParams();
@@ -32,7 +32,7 @@ export default function GroupDetail() {
   const fetchGroupDetails = useCallback(async () => {
     try {
       const token = localStorage.getItem("superadmin_token");
-      const res = await axios.get(`${API_URL}/api/superadmin/groups/${id}`, {
+      const res = await axios.get(`${API_URL}/superadmin/groups/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import "./SuperAdminDashboard.css";
 
 const API_URL =
-  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
+  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com/api";
 
 export default function SuperAdminDashboard() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function SuperAdminDashboard() {
   const fetchStats = useCallback(async () => {
     try {
       const token = localStorage.getItem("superadmin_token");
-      const res = await axios.get(`${API_URL}/api/superadmin/stats`, {
+      const res = await axios.get(`${API_URL}/superadmin/stats`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

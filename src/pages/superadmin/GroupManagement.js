@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import "./GroupManagement.css";
 
 const API_URL =
-  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com";
+  process.env.REACT_APP_API_URL || "https://backend-083k.onrender.com/api";
 
 export default function GroupManagement() {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default function GroupManagement() {
       if (search) params.search = search;
       if (statusFilter !== "all") params.status = statusFilter;
 
-      const res = await axios.get(`${API_URL}/api/superadmin/groups`, {
+      const res = await axios.get(`${API_URL}/superadmin/groups`, {
         headers: { Authorization: `Bearer ${token}` },
         params,
       });
