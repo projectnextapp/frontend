@@ -39,6 +39,7 @@ import GroupManagement from "./pages/superadmin/GroupManagement";
 import GroupDetail from "./pages/superadmin/GroupDetail";
 
 import AdvertManagement from "./pages/superadmin/AdvertManagement";
+import LandingPage from "./pages/landing/LandingPage";
 
 // Route guard
 const PrivateRoute = ({ children }) => {
@@ -66,6 +67,9 @@ function AppRoutes() {
       <Route path="/superadmin/groups/:id" element={<GroupDetail />} />
 
       <Route path="/superadmin/adverts" element={<AdvertManagement />} />
+
+      {/* Landing Page - NEW DEFAULT ROUTE */}
+      <Route path="/" element={<LandingPage />} />
 
       {/* Public */}
       <Route

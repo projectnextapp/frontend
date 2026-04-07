@@ -281,6 +281,21 @@
   transition: all 0.2s;
 }
 
+.btn-delete {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  padding-top: 20px;
+  background: #eb2e0c;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
 .btn-view-details:hover {
   background: #1d4ed8;
   transform: translateY(-1px);

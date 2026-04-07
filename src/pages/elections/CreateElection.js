@@ -1,58 +1,72 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { electionAPI } from '../../services/api';
-import { PageHeader, Button, Input, Select, Card } from '../../components/ui/UI';
-import { MdArrowBack, MdAdd, MdDelete } from 'react-icons/md';
-import toast from 'react-hot-toast';
-import './Elections.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { electionAPI } from "../../services/api";
+import {
+  PageHeader,
+  Button,
+  Input,
+  Select,
+  Card,
+} from "../../components/ui/UI";
+import { MdArrowBack, MdAdd, MdDelete } from "react-icons/md";
+import toast from "react-hot-toast";
+import "./Elections.css";
 
 const TYPE_OPTIONS = [
-  { value: 'election',     label: '🗳️ Election (candidates)' },
-  { value: 'general_vote', label: '📊 General Vote (yes/no or options)' },
+  { value: "election", label: "🗳️ Election (candidates)" },
+  { value: "general_vote", label: "📊 General Vote (yes/no or options)" },
 ];
 
 export default function CreateElection() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    title: '', position: '', type: 'election',
-    deadline: '', showResultsLive: false
+    title: "",
+    position: "",
+    type: "election",
+    deadline: "",
+    showResultsLive: false,
   });
   const [candidates, setCandidates] = useState([]);
-  const [newCand,    setNewCand]    = useState('');
-  const [loading, setLoading]       = useState(false);
+  const [newCand, setNewCand] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handle = e => {
-    const val = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    setForm(f => ({ ...f, [e.target.name]: val }));
+  const handle = (e) => {
+    const val =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setForm((f) => ({ ...f, [e.target.name]: val }));
   };
 
   const addCandidate = () => {
     if (!newCand.trim()) return;
-    setCandidates(c => [...c, { name: newCand.trim() }]);
-    setNewCand('');
+    setCandidates((c) => [...c, { name: newCand.trim() }]);
+    setNewCand("");
   };
 
-  const removeCandidate = (i) => setCandidates(c => c.filter((_, idx) => idx !== i));
+  const removeCandidate = (i) =>
+    setCandidates((c) => c.filter((_, idx) => idx !== i));
 
-  const submit = async e => {
+  const submit = async (e) => {
     e.preventDefault();
-    if (form.type === 'election' && candidates.length < 2) {
-      toast.error('Add at least 2 candidates'); return;
+    if (form.type === "election" && candidates.length < 2) {
+      toast.error("Add at least 2 candidates");
+      return;
     }
 
     const payload = {
       ...form,
-      candidates: JSON.stringify(candidates)
+      candidates: JSON.stringify(candidates),
     };
 
     setLoading(true);
     try {
       await electionAPI.create(payload);
-      toast.success('Election created!');
-      navigate('/elections');
+      toast.success("Election created!");
+      navigate("/elections");
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed');
-    } finally { setLoading(false); }
+      toast.error(err.response?.data?.message || "Failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -61,7 +75,13 @@ export default function CreateElection() {
         title="Create Election"
         subtitle="Set up a new election or general vote"
         actions={
-          <Button variant="ghost" icon={<MdArrowBack />} onClick={() => navigate('/elections')}>Back</Button>
+          <Button
+            variant="ghost"
+            icon={<MdArrowBack />}
+            onClick={() => navigate("/elections")}
+          >
+            Back
+          </Button>
         }
       />
 
@@ -99,7 +119,14 @@ export default function CreateElection() {
             required
           />
 
-          <label style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14 }}>
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              fontSize: 14,
+            }}
+          >
             <input
               type="checkbox"
               name="showResultsLive"
@@ -110,15 +137,28 @@ export default function CreateElection() {
           </label>
 
           {/* Candidates */}
-          {form.type === 'election' && (
+          {form.type === "election" && (
             <div>
-              <div className="add-member__section-title" style={{ marginBottom: 12 }}>
+              <div
+                className="add-member__section-title"
+                style={{ marginBottom: 12 }}
+              >
                 Candidates ({candidates.length})
               </div>
               {candidates.map((c, i) => (
-                <div key={i} className="candidate-row" style={{ marginBottom: 8 }}>
+                <div
+                  key={i}
+                  className="candidate-row"
+                  style={{ marginBottom: 8 }}
+                >
                   <span className="candidate-row__name">{c.name}</span>
-                  <Button variant="ghost" size="sm" icon={<MdDelete />} onClick={() => removeCandidate(i)} type="button">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    icon={<MdDelete />}
+                    onClick={() => removeCandidate(i)}
+                    type="button"
+                  >
                     Remove
                   </Button>
                 </div>
@@ -128,18 +168,35 @@ export default function CreateElection() {
                   className="field__input"
                   placeholder="Candidate name..."
                   value={newCand}
-                  onChange={e => setNewCand(e.target.value)}
-                  onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addCandidate())}
+                  onChange={(e) => setNewCand(e.target.value)}
+                  onKeyDown={(e) =>
+                    e.key === "Enter" && (e.preventDefault(), addCandidate())
+                  }
                   style={{ flex: 1 }}
                 />
-                <Button type="button" variant="outline" icon={<MdAdd />} onClick={addCandidate}>Add</Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  icon={<MdAdd />}
+                  onClick={addCandidate}
+                >
+                  Add
+                </Button>
               </div>
             </div>
           )}
 
-          <div style={{ display: 'flex', gap: 10 }}>
-            <Button type="submit" loading={loading}>Create Election</Button>
-            <Button type="button" variant="ghost" onClick={() => navigate('/elections')}>Cancel</Button>
+          <div style={{ display: "flex", gap: 10 }}>
+            <Button type="submit" loading={loading}>
+              Create Election
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => navigate("/elections")}
+            >
+              Cancel
+            </Button>
           </div>
         </form>
       </Card>

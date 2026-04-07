@@ -66,6 +66,35 @@ export default function GroupManagement() {
     return matchesSearch && matchesStatus;
   });
 
+  const handleDeleteGroup = async (groupId, groupName) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${groupName}"?\n\nThis will remove ALL members and data permanently.`,
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      const token = localStorage.getItem("superadmin_token");
+
+      const res = await axios.delete(
+        `${API_URL}/superadmin/groups/${groupId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
+
+      if (res.data.success) {
+        toast.success("Group deleted successfully");
+
+        // Remove from UI instantly
+        setGroups((prev) => prev.filter((g) => g._id !== groupId));
+      }
+    } catch (err) {
+      console.error("Delete group error:", err);
+      toast.error(err.response?.data?.message || "Failed to delete group");
+    }
+  };
+
   return (
     <div className="group-management">
       <div className="page-header">
@@ -168,6 +197,13 @@ export default function GroupManagement() {
                 >
                   View Details
                 </Link>
+
+                <button
+                  className="btn-delete"
+                  onClick={() => handleDeleteGroup(group._id, group.name)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
