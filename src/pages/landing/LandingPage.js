@@ -209,10 +209,11 @@ export default function LandingPage() {
           <div className="landing-pricing__grid">
             <PricingCard
               name="Starter"
-              price="Free"
-              period="forever"
+              bonus="1st 2 months Free"
+              price="N5000"
+              period="Monthly"
               features={[
-                "Up to 50 members",
+                "Up to 100 members",
                 "Basic member management",
                 "Elections & voting",
                 "Financial tracking",
@@ -224,6 +225,7 @@ export default function LandingPage() {
             />
             <PricingCard
               name="Professional"
+              bonus="1st 2 months Free"
               price="N10,000"
               period="per month"
               features={[
@@ -364,7 +366,16 @@ function Step({ number, title, description }) {
 }
 
 // Pricing Card Component
-function PricingCard({ name, price, period, features, cta, link, popular }) {
+function PricingCard({
+  name,
+  bonus,
+  price,
+  period,
+  features,
+  cta,
+  link,
+  popular,
+}) {
   return (
     <div
       className={`landing-pricing-card ${popular ? "landing-pricing-card--popular" : ""}`}
@@ -374,6 +385,7 @@ function PricingCard({ name, price, period, features, cta, link, popular }) {
       )}
       <div className="landing-pricing-card__header">
         <h3 className="landing-pricing-card__name">{name}</h3>
+        {bonus && <div className="landing-pricing-card__bonus">{bonus}</div>}
         <div className="landing-pricing-card__price">
           <span className="landing-pricing-card__price-amount">{price}</span>
           <span className="landing-pricing-card__price-period">/{period}</span>
