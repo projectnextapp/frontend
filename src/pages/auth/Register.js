@@ -70,7 +70,7 @@ export default function Register() {
             <div className="auth-form__grid">
               <Input label="Association Name" name="name" placeholder="e.g. Old Boys Alumni" value={form.name} onChange={handle} icon={<MdBusiness />} required />
               <Input label="Location / City" name="location" placeholder="e.g. Lagos, Nigeria" value={form.location} onChange={handle} icon={<MdLocationOn />} required />
-              <Input label="Contact Email" name="contactEmail" type="email" placeholder="contact@association.org" value={form.contactEmail} onChange={handle} icon={<MdEmail />} required />
+              <Input label="Contact Email" name="contactEmail" type="email" placeholder="info@pncnigeria.org" value={form.contactEmail} onChange={handle} icon={<MdEmail />} required />
               <Input label="Password" name="password" type="password" placeholder="Min 6 characters" value={form.password} onChange={handle} icon={<MdLock />} required />
             </div>
             <Select label="Membership Size Range" name="memberSizeRange" options={SIZE_OPTIONS} value={form.memberSizeRange} onChange={handle} />

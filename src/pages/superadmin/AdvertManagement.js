@@ -178,7 +178,7 @@ export default function AdvertManagement() {
       fetchAdverts();
       fetchStats();
     } catch (err) {
-      console.log("TOGGLE ERROR:", err.response);
+      // console.log("TOGGLE ERROR:", err.response);
       toast.error(err.response?.data?.message || "Failed to toggle advert");
     }
   };

@@ -41,10 +41,17 @@ export const memberAPI = {
   getOne: (id) => API.get(`/members/${id}`),
   add: (data) => API.post("/members", data),
   update: (id, data) => API.put(`/members/${id}`, data),
-  approve: (id) => API.patch(`/members/${id}/approve`),
+  // approve: (id) => API.patch(`/members/${id}/approve`),
   toggleStatus: (id) => API.patch(`/members/${id}/toggle-status`),
   delete: (id) => API.delete(`/members/${id}`),
   birthdayWish: (id, data) => API.post(`/members/${id}/birthday-wish`, data),
+
+
+  // ADD THESE NEW LINES:
+  getPending:   ()         => API.get('/members/pending/list'),
+  approve:      (id)       => API.patch(`/members/${id}/approve`),
+  reject:       (id, data) => API.patch(`/members/${id}/reject`, data),
+  bulkApprove:  (data)     => API.post('/members/bulk-approve', data),
 };
 
 // ─── Elections ──────────────────────────────────────────────────

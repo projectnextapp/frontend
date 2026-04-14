@@ -23,7 +23,9 @@ export default function Login() {
       toast.success("Welcome back!");
       navigate("/dashboard");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Login failed");
+      // toast.error(err.response?.data?.message || "Login failed");
+      toast.error("Login failed");
+
     } finally {
       setLoading(false);
     }
@@ -50,7 +52,7 @@ export default function Login() {
             label="Association Email"
             name="contactEmail"
             type="email"
-            placeholder="contact@association.org"
+            placeholder="info@pncnigeria.org"
             value={form.contactEmail}
             onChange={handle}
             icon={<MdEmail />}

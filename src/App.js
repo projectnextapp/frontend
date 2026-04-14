@@ -41,6 +41,9 @@ import GroupDetail from "./pages/superadmin/GroupDetail";
 import AdvertManagement from "./pages/superadmin/AdvertManagement";
 import LandingPage from "./pages/landing/LandingPage";
 
+import MemberRegister from './pages/auth/MemberRegister';
+import PendingMembers from './pages/members/PendingMembers';
+
 // Route guard
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -96,6 +99,9 @@ function AppRoutes() {
           </PublicRoute>
         }
       />
+         {/* ADD THIS NEW ROUTE - Member Self-Registration (Public) */}
+      <Route path="/member-register" element={<MemberRegister />} />
+      <Route path="/pending-members" element={<PendingMembers />} />
       <Route path="/" element={<Navigate to="/login" replace />} />
 
       <Route path="/support" element={<Support />} />
