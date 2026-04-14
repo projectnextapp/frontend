@@ -66,6 +66,12 @@ export default function LandingPage() {
                 <MdArrowForward />
               </Link>
               <Link
+                to="/member-register"
+                className="landing-btn landing-btn--outline"
+              >
+                Join Existing Group
+              </Link>
+              <Link
                 to="/member-login"
                 className="landing-btn landing-btn--outline"
               >
@@ -209,9 +215,9 @@ export default function LandingPage() {
           <div className="landing-pricing__grid">
             <PricingCard
               name="Starter"
-              bonus="1st 2 months Free"
-              price="N5000"
-              period="Monthly"
+              bonus="Free"
+              price=""
+              period=""
               features={[
                 "Up to 100 members",
                 "Basic member management",
@@ -279,6 +285,13 @@ export default function LandingPage() {
               >
                 Get Started Free
                 <MdArrowForward />
+              </Link>
+
+              <Link
+                to="/member-register"
+                className="landing-btn landing-btn--outline landing-btn--lg"
+              >
+                Join Existing Group
               </Link>
               <Link
                 to="/login"
